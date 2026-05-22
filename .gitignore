@@ -1,0 +1,24 @@
+venv/
+__pycache__/
+*.pyc
+.DS_Store
+
+# local-only working files
+CLAUDE.md
+STUDY_NOTES.md
+
+# data files (redownload from MHCLG source)
+data/raw/
+*.xlsx
+*.xls
+*.ods
+
+# generated outputs
+*.db
+*.sqlite
+outputs/figures/*.png
+outputs/figures/*.svg
+
+# secrets
+.env
+.streamlit/secrets.toml
