@@ -1,6 +1,7 @@
 # UK Housing Delivery Analysis
 
 [![GitHub](https://img.shields.io/badge/GitHub-fadhliismail%2Fuk--housing--delivery--analysis-blue)](https://github.com/fadhliismail/uk-housing-delivery-analysis)
+[![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://uk-housing-delivery-analysis-4arz2dxkzjqmnlionecr54.streamlit.app/)
 
 Analysis of housing delivery across England, with a focus on local authority performance, affordable housing, and the starts-vs-completions pipeline. Data from MHCLG Live Tables.
 
