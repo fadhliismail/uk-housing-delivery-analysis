@@ -191,6 +191,9 @@ with tab_hdc:
     )
     hdc_trend = net_la[net_la["ons_code"] == HDC_CODE][["year", "net_additions"]]
 
+    lhn_years  = sorted(hdc_trend["year"].unique())
+    lhn_values = [874 if y <= "2023-24" else 1213 for y in lhn_years]
+
     fig = go.Figure()
     fig.add_trace(go.Scatter(
         x=hdc_trend["year"], y=hdc_trend["net_additions"],
@@ -202,14 +205,26 @@ with tab_hdc:
         name="East of England shire median", mode="lines",
         line=dict(color=C_GREY, width=1.5, dash="dot"),
     ))
+    fig.add_trace(go.Scatter(
+        x=lhn_years, y=lhn_values,
+        name="Local Housing Need (MHCLG Standard Method)",
+        mode="lines",
+        line=dict(color=C_TARGET, width=1.5, dash="dash", shape="hv"),
+        hovertemplate="LHN target: %{y:,}<extra></extra>",
+    ))
     fig.update_layout(
-        title="Huntingdonshire net additions vs East of England shire district median",
+        title="Huntingdonshire net additions vs Local Housing Need and East of England shire median",
         xaxis_title="Year", yaxis_title="Net additions",
-        height=380, hovermode="x unified",
+        height=420, hovermode="x unified",
         margin=dict(t=50, b=80), xaxis_tickangle=-45,
         legend=dict(orientation="h", yanchor="bottom", y=1.02, xanchor="left", x=0),
     )
     st.plotly_chart(fig, use_container_width=True)
+    st.caption(
+        "Local Housing Need: 874 homes/year (MHCLG Standard Method, pre-December 2024 NPPF), "
+        "rising to 1,213 from 2024-25 following the revised Standard Method introduced in the "
+        "December 2024 NPPF."
+    )
 
     col_l, col_r = st.columns(2)
 
